@@ -8,12 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 public class DecoratorTests {
 
     private static final BigDecimal TEN = BigDecimal.valueOf(10.0);
@@ -40,7 +39,7 @@ public class DecoratorTests {
         Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);
         List<Flower> flowers = loggingDecorator.getAllFlowers();
 
-        assertEquals(2, flowers.size());
+        Assertions.assertEquals(2, flowers.size());
     }
 
     @Test
@@ -53,7 +52,7 @@ public class DecoratorTests {
         Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);
         List<Flower> flowers = availabilityDecorator.getAllFlowers();
 
-        assertEquals(1, flowers.size());
-        assertEquals("Rose", flowers.get(0).getName());
+        Assertions.assertEquals(1, flowers.size());
+        Assertions.assertEquals("Rose", flowers.get(0).getName());
     }
 }
