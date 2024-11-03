@@ -64,8 +64,8 @@ public class FlowerBucket implements Item {
         return new ArrayList<>(flowers);
     }
 
-    public void setFlowers(List<Flower> flowers) {
-        this.flowers = new ArrayList<>(flowers);
+    public void setFlowers(List<Flower> newFlowers) {
+        this.flowers = new ArrayList<>(newFlowers);
         updatePrice();
     }
 

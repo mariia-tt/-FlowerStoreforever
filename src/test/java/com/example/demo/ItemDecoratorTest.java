@@ -88,10 +88,10 @@ class ItemDecoratorTest {
 
     @Test
     void testNestedDecoratorsOrder() {
-        Item basketWithRibbon = new BasketDecorator(new RibbonDecorator
-        (flowerBucket));
-        Item ribbonWithBasket = new RibbonDecorator(new BasketDecorator
-        (flowerBucket));
+        Item basketWithRibbon = new BasketDecorator(new RibbonDecorator(
+            flowerBucket));
+        Item ribbonWithBasket = new RibbonDecorator(new BasketDecorator(
+            flowerBucket));
 
         Assertions.assertEquals(basketWithRibbon.getPrice(),
          ribbonWithBasket.getPrice(), DELTA);
