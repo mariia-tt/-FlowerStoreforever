@@ -22,14 +22,15 @@ public class Flower implements Item {
     protected Flower() {
     }
 
-    public Flower(String name, String color, BigDecimal price, boolean available) {
+    public Flower(String name, String color, BigDecimal price,
+     boolean available) {
         this.name = name;
         this.color = color;
         this.price = price;
         this.available = available;
     }
 
-    // Getters and Setters
+    //Getters and Setters
     public Long getId() {
         return id;
     }
