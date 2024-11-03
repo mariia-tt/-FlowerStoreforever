@@ -20,7 +20,8 @@ public class Flower {
     private BigDecimal price;
     private Boolean available;
 
-    public Flower(String flowerName, String flowerColor, BigDecimal flowerPrice, Boolean flowerAvailable) {
+    public Flower(String flowerName, String flowerColor, BigDecimal flowerPrice,
+     Boolean flowerAvailable) {
         this.name = flowerName;
         this.color = flowerColor;
         this.price = flowerPrice;
@@ -51,19 +52,19 @@ public class Flower {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String newName) {
+        this.name = newName;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(String newColor) {
+        this.color = newColor;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setPrice(BigDecimal newPrice) {
+        this.price = newPrice;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setAvailable(Boolean newAvailable) {
+        this.available = newAvailable;
     }
 }
