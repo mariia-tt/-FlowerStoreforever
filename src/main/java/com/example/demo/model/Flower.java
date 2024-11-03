@@ -20,11 +20,11 @@ public class Flower {
     private BigDecimal price;
     private Boolean available;
 
-    public Flower(String name, String color, BigDecimal price, Boolean available) {
-        this.name = name;
-        this.color = color;
-        this.price = price;
-        this.available = available;
+    public Flower(String flowerName, String flowerColor, BigDecimal flowerPrice, Boolean flowerAvailable) {
+        this.name = flowerName;
+        this.color = flowerColor;
+        this.price = flowerPrice;
+        this.available = flowerAvailable;
     }
 
     public Integer getId() {

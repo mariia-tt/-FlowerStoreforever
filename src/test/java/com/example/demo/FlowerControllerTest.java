@@ -23,7 +23,7 @@ public class FlowerControllerTest {
     @Test
     void testAddFlower() throws Exception {
         String flowerJson 
- = "{\"name\": \"Lily\",\"color\": \"Pink\",\"price\": 1.75,\"available\": true}";
+ = "{\"name\":\"Lily\",\"color\":\"Pink\",\"price\":1.75,\"available\":true}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/flower")
                 .contentType(MediaType.APPLICATION_JSON)

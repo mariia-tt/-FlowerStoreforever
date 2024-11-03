@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+
 public class DecoratorTests {
 
     private static final BigDecimal TEN = BigDecimal.valueOf(10.0);
@@ -29,14 +30,18 @@ public class DecoratorTests {
         availabilityDecorator = new AvailabilityFilterDecorator(flowerService);
     }
 
-    @Test
-    public void testLoggingDecorator() {
+    private List<Flower> setupMockFlowers() {
         List<Flower> mockFlowers = Arrays.asList(
             new Flower("Rose", "Red", TEN, true),
             new Flower("Tulip", "Yellow", FIVE, false)
         );
-
         Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);
+        return mockFlowers;
+    }
+
+    @Test
+    public void testLoggingDecorator() {
+        setupMockFlowers();
         List<Flower> flowers = loggingDecorator.getAllFlowers();
 
         Assertions.assertEquals(2, flowers.size());
@@ -44,12 +49,7 @@ public class DecoratorTests {
 
     @Test
     public void testAvailabilityFilterDecorator() {
-        List<Flower> mockFlowers = Arrays.asList(
-            new Flower("Rose", "Red", TEN, true),
-            new Flower("Tulip", "Yellow", FIVE, false)
-        );
-
-        Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);
+        setupMockFlowers();
         List<Flower> flowers = availabilityDecorator.getAllFlowers();
 
         Assertions.assertEquals(1, flowers.size());
