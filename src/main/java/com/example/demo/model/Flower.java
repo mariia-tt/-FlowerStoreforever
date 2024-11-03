@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,22 +15,62 @@ import lombok.Setter;
 @Entity
 @Table(name = "flowers")
 public class Flower {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
     private String color;
-    private double price;
-    private boolean available;
+    private BigDecimal price;
+    private Boolean available;
 
-    // No-arg constructor required by JPA
-    public Flower() {}
-
-    public Flower(String name, String color, double price, boolean available) {
+    public Flower(String name, String color, BigDecimal price, Boolean available) {
         this.name = name;
         this.color = color;
         this.price = price;
+        this.available = available;
+    }
+    
+    //Getters and Setters
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 }

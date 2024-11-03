@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Flower;
 
 @Repository
-public interface FlowerRepository extends JpaRepository<Flower, Integer> {
+public interface FlowerRepository extends JpaRepository<Flower, Long> {
+    
 }
