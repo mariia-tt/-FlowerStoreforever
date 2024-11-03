@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Entity;
@@ -57,8 +56,8 @@ public class FlowerBucket implements Item {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer newId) {
+        this.id = newId;
     }
 
     public List<Flower> getFlowers() {

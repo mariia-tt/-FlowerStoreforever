@@ -1,7 +1,12 @@
-// Updated Order.java
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import java.util.List;
 
 import com.example.demo.strategy.delivery.Delivery;
@@ -12,10 +17,10 @@ import com.example.demo.strategy.payment.Payment;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long orderId;
 
     @OneToMany
-    private List<Item> items;
+    private List<Item> orderItems;
 
     @Transient
     private Payment payment;
@@ -27,23 +32,23 @@ public class Order {
     }
 
     public Order(List<Item> items) {
-        this.items = items;
+        this.orderItems = items;
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderId(Long id) {
+        this.orderId = id;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Item> getOrderItems() {
+        return orderItems;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setOrderItems(List<Item> items) {
+        this.orderItems = items;
     }
 
     public Payment getPayment() {
@@ -63,7 +68,8 @@ public class Order {
     }
 
     public double calculateTotalPrice() {
-        double total = items.stream().mapToDouble(Item::getPrice).sum();
+        double total = orderItems.stream()
+        .mapToDouble(Item::getPrice).sum();
         if (delivery != null) {
             total += delivery.calculateDeliveryCost(total);
         }

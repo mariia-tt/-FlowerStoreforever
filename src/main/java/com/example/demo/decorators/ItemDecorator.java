@@ -3,14 +3,18 @@ package com.example.demo.decorators;
 import com.example.demo.model.Item;
 
 public abstract class ItemDecorator implements Item {
-    protected Item item;
+    private Item item;
 
-    public ItemDecorator(Item item) {
-        this.item = item;
+    public ItemDecorator(Item newItem) {
+        this.item = newItem;
     }
 
     @Override
     public double getPrice() {
         return item.getPrice();
+    }
+
+    public Item getItem() {
+        return item;
     }
 }

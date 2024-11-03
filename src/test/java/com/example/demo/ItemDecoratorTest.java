@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,16 @@ import com.example.demo.model.Item;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ItemDecoratorTest {
+    private static final double PAPER_DECORATOR_PRICE = 63.0;
+    private static final double BASKET_DECORATOR_PRICE = 74.0;
+    private static final double RIBBON_DECORATOR_PRICE = 90.0;
+    private static final double EMPTY_BUCKET_PRICE = 13.0;
+    private static final double MULTIPLE_DECORATORS_PRICE = 127.0;
+    private static final double DELTA = 0.01;
+
     private Item flowerBucket;
     private Flower flower;
 
@@ -28,8 +36,8 @@ class ItemDecoratorTest {
     @Test
     void testPaperDecorator() {
         Item decoratedItem = new PaperDecorator(flowerBucket);
-        assertEquals(63.0, decoratedItem.getPrice(), 0.01);
-        
+        assertEquals(PAPER_DECORATOR_PRICE, decoratedItem.getPrice(), DELTA);
+
         PaperDecorator paperDecorator = (PaperDecorator) decoratedItem;
         assertEquals("Wrapped in decorative paper", paperDecorator
         .getDescription());
@@ -38,8 +46,8 @@ class ItemDecoratorTest {
     @Test
     void testBasketDecorator() {
         Item decoratedItem = new BasketDecorator(flowerBucket);
-        assertEquals(74.0, decoratedItem.getPrice(), 0.01);
-        
+        assertEquals(BASKET_DECORATOR_PRICE, decoratedItem.getPrice(), DELTA);
+
         BasketDecorator basketDecorator = (BasketDecorator) decoratedItem;
         assertEquals("Placed in a decorative basket", basketDecorator
         .getDescription());
@@ -48,8 +56,8 @@ class ItemDecoratorTest {
     @Test
     void testRibbonDecorator() {
         Item decoratedItem = new RibbonDecorator(flowerBucket);
-        assertEquals(90.0, decoratedItem.getPrice(), 0.01);
-        
+        assertEquals(RIBBON_DECORATOR_PRICE, decoratedItem.getPrice(), DELTA);
+
         RibbonDecorator ribbonDecorator = (RibbonDecorator) decoratedItem;
         assertEquals("Decorated with a ribbon", ribbonDecorator
         .getDescription());
@@ -62,23 +70,27 @@ class ItemDecoratorTest {
                 new PaperDecorator(flowerBucket)
             )
         );
-        
-        assertEquals(127.0, decoratedItem.getPrice(), 0.01);
+
+        assertEquals(MULTIPLE_DECORATORS_PRICE, decoratedItem.getPrice(),
+         DELTA);
     }
 
     @Test
     void testDecoratorWithEmptyBucket() {
         FlowerBucket emptyBucket = new FlowerBucket();
         Item decoratedItem = new PaperDecorator(emptyBucket);
-        
-        assertEquals(13.0, decoratedItem.getPrice(), 0.01);
+
+        assertEquals(EMPTY_BUCKET_PRICE, decoratedItem.getPrice(), DELTA);
     }
 
     @Test
     void testNestedDecoratorsOrder() {
-        Item order1 = new BasketDecorator(new RibbonDecorator(flowerBucket));
-        Item order2 = new RibbonDecorator(new BasketDecorator(flowerBucket));
-        
-        assertEquals(order1.getPrice(), order2.getPrice(), 0.01);
+        Item basketWithRibbon = new BasketDecorator(new RibbonDecorator(
+            flowerBucket));
+        Item ribbonWithBasket = new RibbonDecorator(new BasketDecorator(
+            flowerBucket));
+
+        assertEquals(basketWithRibbon.getPrice(), ribbonWithBasket.getPrice(),
+         DELTA);
     }
 }

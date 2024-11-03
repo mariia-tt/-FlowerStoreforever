@@ -56,6 +56,10 @@ public class OrderService {
 
     public double calculateOrderTotal(Long id) {
         Order order = getOrderById(id);
-        return order != null ? order.calculateTotalPrice() : 0.0;
+        if (order != null) {
+            return order.calculateTotalPrice();
+        } else {
+            return 0.0;
+        }
     }
 }
