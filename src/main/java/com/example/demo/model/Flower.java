@@ -48,8 +48,8 @@ public class Flower {
         return available;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer newId) {
+        this.id = newId;
     }
 
     public void setName(String newName) {
