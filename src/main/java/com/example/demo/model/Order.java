@@ -18,9 +18,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-
     @OneToMany
-    private List<Item> orderItems;
+    private List<Item> orderItems;  // Changed from 'items' to 'orderItems'
 
     @Transient
     private Payment payment;
@@ -68,8 +67,7 @@ public class Order {
     }
 
     public double calculateTotalPrice() {
-        double total = orderItems.stream()
-        .mapToDouble(Item::getPrice).sum();
+        double total = orderItems.stream().mapToDouble(Item::getPrice).sum();
         if (delivery != null) {
             total += delivery.calculateDeliveryCost(total);
         }
