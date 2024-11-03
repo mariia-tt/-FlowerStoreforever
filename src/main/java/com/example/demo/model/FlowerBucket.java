@@ -84,22 +84,27 @@ public class FlowerBucket implements Item {
 
     public boolean containsFlower(String flowerName) {
         return flowers.stream()
-                .anyMatch(flower -> flower.getName().equalsIgnoreCase(flowerName));
+                .anyMatch(flower -> flower.getName()
+                .equalsIgnoreCase(flowerName));
     }
 
     @Override
     public String toString() {
-        return "FlowerBucket{" +
-                "id=" + id +
-                ", flowerCount=" + flowers.size() +
-                ", totalPrice=" + price +
-                '}';
+        return "FlowerBucket{" 
+        + "id=" + id
+         + ", flowerCount=" + flowers.size()
+          + ", totalPrice=" + price
+           + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FlowerBucket)) return false;
+        if (this == o) {
+            return true;
+        } 
+        if (!(o instanceof FlowerBucket)) { 
+            return false;
+        }
         FlowerBucket that = (FlowerBucket) o;
         return id != null && id.equals(that.getId());
     }
