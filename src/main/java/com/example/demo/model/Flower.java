@@ -9,26 +9,28 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "flowers")
-public class Flower {
-
+public class Flower implements Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
     private String color;
     private BigDecimal price;
-    private Boolean available;
+    private boolean available;
 
-    public Flower(String flowerName, String flowerColor, BigDecimal flowerPrice,
-     Boolean flowerAvailable) {
-        this.name = flowerName;
-        this.color = flowerColor;
-        this.price = flowerPrice;
-        this.available = flowerAvailable;
+    protected Flower() {
     }
 
-    public Integer getId() {
+    public Flower(String name, String color, BigDecimal price, boolean available) {
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.available = available;
+    }
+
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
@@ -36,35 +38,36 @@ public class Flower {
         return name;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setId(Integer newId) {
-        this.id = newId;
-    }
-
     public void setName(String newName) {
         this.name = newName;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public void setColor(String newColor) {
         this.color = newColor;
     }
 
+    public BigDecimal getPriceAsBigDecimal() {
+        return price;
+    }
+
     public void setPrice(BigDecimal newPrice) {
         this.price = newPrice;
     }
 
-    public void setAvailable(Boolean newAvailable) {
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean newAvailable) {
         this.available = newAvailable;
+    }
+
+    @Override
+    public double getPrice() {
+        return price.doubleValue();
     }
 }
