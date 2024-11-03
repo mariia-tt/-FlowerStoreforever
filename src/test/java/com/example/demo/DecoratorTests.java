@@ -8,13 +8,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class DecoratorTests {
+
+    private static final BigDecimal TEN = BigDecimal.valueOf(10.0);
+    private static final BigDecimal FIVE = BigDecimal.valueOf(5.0);
 
     private FlowerService flowerService;
     private LoggingDecorator loggingDecorator;
@@ -30,8 +33,8 @@ public class DecoratorTests {
     @Test
     public void testLoggingDecorator() {
         List<Flower> mockFlowers = Arrays.asList(
-            new Flower("Rose", "Red", BigDecimal.valueOf(10.0), true),
-            new Flower("Tulip", "Yellow", BigDecimal.valueOf(5.0), false)
+            new Flower("Rose", "Red", TEN, true),
+            new Flower("Tulip", "Yellow", FIVE, false)
         );
 
         Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);
@@ -43,8 +46,8 @@ public class DecoratorTests {
     @Test
     public void testAvailabilityFilterDecorator() {
         List<Flower> mockFlowers = Arrays.asList(
-            new Flower("Rose", "Red", BigDecimal.valueOf(10.0), true),
-            new Flower("Tulip", "Yellow", BigDecimal.valueOf(5.0), false)
+            new Flower("Rose", "Red", TEN, true),
+            new Flower("Tulip", "Yellow", FIVE, false)
         );
 
         Mockito.when(flowerService.getAllFlowers()).thenReturn(mockFlowers);

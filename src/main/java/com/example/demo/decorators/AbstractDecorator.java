@@ -6,7 +6,7 @@ import com.example.demo.service.FlowerService;
 import java.util.List;
 
 public abstract class AbstractDecorator {
-    protected final FlowerService flowerService;
+    private final FlowerService flowerService;
 
     public AbstractDecorator(FlowerService flowerService) {
         this.flowerService = flowerService;

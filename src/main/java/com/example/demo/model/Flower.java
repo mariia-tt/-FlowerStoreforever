@@ -7,11 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
 @Entity
 @Table(name = "flowers")
 public class Flower {
@@ -19,7 +15,7 @@ public class Flower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    
     private String name;
     private String color;
     private BigDecimal price;
@@ -31,9 +27,8 @@ public class Flower {
         this.price = price;
         this.available = available;
     }
-    
-    //Getters and Setters
 
+    // Getters and Setters
     public Integer getId() {
         return id;
     }

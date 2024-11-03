@@ -18,7 +18,8 @@ public class AvailabilityFilterDecorator extends AbstractDecorator {
         List<Flower> availableFlowers = allFlowers.stream()
                 .filter(Flower::getAvailable)
                 .collect(Collectors.toList());
-        System.out.println("Filtered available flowers: " + availableFlowers.size());
+        System.out.println("Filtered available flowers: "
+         + availableFlowers.size());
         return availableFlowers;
     }
 }

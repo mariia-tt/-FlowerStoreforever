@@ -19,7 +19,8 @@ public class FlowerControllerTest {
 
     @Test
     void testAddFlower() throws Exception {
-        String flowerJson = "{\"name\": \"Lily\", \"color\": \"Pink\", \"price\": 1.75, \"available\": true}";
+        String flowerJson = 
+"{\"name\": \"Lily\", \"color\": \"Pink\", \"price\": 1.75, \"available\": true}";
 
         mockMvc.perform(post("/api/v1/flower")
                 .contentType(MediaType.APPLICATION_JSON)
